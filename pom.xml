@@ -124,7 +124,7 @@
 							<schemaPaths>
 								<param>src/main/resources/graphql-client</param>
 							</schemaPaths>
-							<packageName>com.lucasangelo.todosimple.codegen</packageName>
+							<packageName>com.bruna.todosimple.codegen</packageName>
 							<addGeneratedAnnotation>true</addGeneratedAnnotation>
 						</configuration>
 					</execution>
