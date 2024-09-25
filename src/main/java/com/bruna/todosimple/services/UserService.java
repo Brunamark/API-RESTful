@@ -3,7 +3,6 @@ package com.bruna.todosimple.services;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import com.bruna.todosimple.models.User;
-import com.bruna.todosimple.repositories.TaskRepository;
 import com.bruna.todosimple.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 
@@ -11,12 +10,10 @@ import jakarta.transaction.Transactional;
 public class UserService {
     private UserRepository userRepository;
 
-    private TaskRepository taskRepository;
 
     
-    public UserService(UserRepository userRepository, TaskRepository taskRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.taskRepository = taskRepository;
     }
 
 
@@ -29,9 +26,8 @@ public class UserService {
 
     @Transactional
     public User create(User obj){
-        obj.setId(null);
+        obj.setId((Long)null);
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
