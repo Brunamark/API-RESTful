@@ -1,6 +1,7 @@
 package com.bruna.todosimple.services;
 
 import java.util.Optional;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import com.bruna.todosimple.models.Task;
 import com.bruna.todosimple.models.User;
@@ -27,11 +28,14 @@ public class TaskService {
         ));
     }
 
+    public List<Task> findAllByUserId(Long id) {
+        return taskRepository.findByUser_Id(id);
+    }
+
     @Transactional
-    @SuppressWarnings("null")
     public Task create(Task obj){
         User user = this.userService.findById(obj.getUser().getId());
-        obj.setId((Long) null);
+        obj.setId( null);
         obj.setUser(user);
         obj = this.taskRepository.save(obj);
         return obj;
