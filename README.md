@@ -59,5 +59,105 @@ This RESTful API follows the Model-View-Controller (MVC) architecture, which str
 ### API Endpoints
 
 <ul>
-  <li>GET /user/id</li>
+  <li>GET /user/{id}</li>
+      Response: 
+
+      
+          [
+            {
+              id: 2,
+              username: "pedro",
+              password: "strongpassword"
+            }
+          ]
+          
+    
 </ul>
+<ul>
+  <li>GET /task/{id}</li>
+      Response: 
+
+      
+          [
+            {
+              id: 1,
+              user_id: 2,
+              description: "this is a description writed by pedro"
+            }
+          ]
+          
+</ul>
+<ul>
+  <li>POST /user</li>
+      Response: 
+  
+       Status Code: 201 Created
+       Location Header: he URL of the newly created user resource (e.g., `/user/{id}`).
+   
+</ul>
+<ul>
+  <li>POST /task</li>
+      Response: 
+  
+       Status Code: 201 Created
+       Location Header: he URL of the newly created user resource (e.g., `/task/{id}`).
+   
+</ul>
+<ul>
+  <li>PUT /user/{id}</li>
+      Response: 
+
+      
+          [
+            {
+              id: 2,
+              username: "pedro",
+              password: "newpassword"
+            }
+          ]
+          
+</ul>
+<ul>
+  <li>PUT /task/{id}</li>
+      Response: 
+
+      
+          [
+            {
+              id: 1,
+              user_id: 2,
+              description: "this is a new description writed by pedro"
+            }
+          ]
+          
+</ul>
+
+<ul>
+  <li>DELTE /user/{id}</li>
+      Response: 
+
+      
+      Status Code: 204  No Content
+          
+</ul>
+
+<ul>
+  <li>DELTE /task/{id}</li>
+      Response: 
+
+      
+      Status Code: 204  No Content
+          
+</ul>
+
+### 4. Authentication
+
+Not yet implemented. In the future it will be implemented JWT Auth.
+
+### 5. Error Handling
+
+Not yet implemented.
+
+### 6. Running the Application
+
+As soon as the project finishes, it will be available.
