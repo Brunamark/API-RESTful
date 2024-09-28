@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bruna.todosimple.models.Task;
 import com.bruna.todosimple.repositories.TaskRepository;
 import com.bruna.todosimple.services.TaskService;
+import com.bruna.todosimple.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +29,11 @@ public class TaskController {
 
     private TaskService taskService;
     private TaskRepository taskRepository;
-
-    public TaskController(TaskService taskService, TaskRepository taskRepository) {
+    private UserService userService;
+    public TaskController(TaskService taskService, TaskRepository taskRepository,UserService userService) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/{id}")
@@ -69,6 +71,7 @@ public class TaskController {
 
     @GetMapping("/user/{id}")
     public ResponseEntity<List<Task>> findAllByUserId(@PathVariable Long id){
+        this.userService.findById(id);
         List<Task> objs = this.taskService.findAllByUserId(id);
         return ResponseEntity.ok().body(objs);
     }
